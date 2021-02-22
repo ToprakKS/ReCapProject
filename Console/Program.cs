@@ -11,9 +11,9 @@ namespace Console
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetCarDetails())
             {
-                System.Console.WriteLine(car.DailyPrice);
+                System.Console.WriteLine("{0} {1} {2} {3}", car.CarName,car.BrandName,car.ColorName,car.DailyPrice);
             }
         }
     }
