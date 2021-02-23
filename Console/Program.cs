@@ -10,10 +10,18 @@ namespace Console
         static void Main(string[] args)
         {
             CarManager carManager = new CarManager(new EfCarDal());
+            var result = carManager.GetCarDetails();
 
-            foreach (var car in carManager.GetCarDetails())
+            if(result.Success == true)
             {
-                System.Console.WriteLine("{0} {1} {2} {3}", car.CarName,car.BrandName,car.ColorName,car.DailyPrice);
+                foreach (var car in result.Data)
+                {
+                    System.Console.WriteLine(car.CarName + " / " + car.BrandName);
+                }
+            }
+            else
+            {
+                System.Console.WriteLine(result.Messages);
             }
         }
     }
